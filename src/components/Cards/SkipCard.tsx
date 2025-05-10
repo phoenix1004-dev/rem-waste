@@ -1,4 +1,5 @@
 import type { Skip } from "../../types";
+import checkIcon from "../../assets/check.svg";
 
 interface SkipCardProps {
   skip: Skip;
@@ -22,6 +23,12 @@ export default function SkipCard({
         <div className="absolute top-6 right-6 bg-blue-600 text-white px-4 py-2 rounded-full font-bold">
           {skip.size} Yards
         </div>
+
+        {isSelected && (
+          <div className="absolute top-2 right-2 bg-green-500 text-white p-1 rounded-full">
+            <img src={checkIcon} alt="Selected" className="h-6 w-6" />
+          </div>
+        )}
       </div>
 
       <div className="px-6 pt-2 pb-6 text-left">
