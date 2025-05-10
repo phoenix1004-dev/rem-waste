@@ -21,7 +21,7 @@
     #213 95%
   );
 
-  border: solid 5px transparent;
+  border: solid 3px transparent;
   border-radius: 2em;
   --gradient-border: conic-gradient(
     from var(--border-angle),
