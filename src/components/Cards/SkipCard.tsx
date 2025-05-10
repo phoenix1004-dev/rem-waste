@@ -1,5 +1,6 @@
 import type { Skip } from "../../types";
 import checkIcon from "../../assets/check.svg";
+import warningIcon from "../../assets/warning.svg";
 
 interface SkipCardProps {
   skip: Skip;
@@ -13,7 +14,6 @@ export default function SkipCard({
   isSelected,
 }: SkipCardProps) {
   return (
-    // <div className={`overflow-hidden ${isSelected ? "box" : ""}`}>
     <div
       className={`bg-[#1a1a1a] rounded-lg overflow-hidden cursor-pointer ${
         isSelected ? "box" : ""
@@ -33,6 +33,13 @@ export default function SkipCard({
         {isSelected && (
           <div className="absolute top-2 right-2 bg-green-500 text-white p-1 rounded-full">
             <img src={checkIcon} alt="Selected" className="h-6 w-6" />
+          </div>
+        )}
+
+        {!skip.allowed_on_road && (
+          <div className="absolute bottom-5 left-5 mx-auto w-max px-4 py-1.5 bg-black border border-[#ffbb1c] rounded-md text-[#ffbb1c] text-xs flex items-center">
+            <img src={warningIcon} alt="Warning" className="h-5 w-5 mr-2" />
+            Not Allowed On The Road
           </div>
         )}
       </div>
@@ -63,6 +70,5 @@ export default function SkipCard({
         </button>
       </div>
     </div>
-    // </div>
   );
 }
