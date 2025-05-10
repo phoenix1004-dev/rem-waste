@@ -15,7 +15,7 @@ export default function SkipCard({
 }: SkipCardProps) {
   return (
     <div
-      className={`bg-[#1a1a1a] rounded-lg overflow-hidden cursor-pointer ${
+      className={`max-w-[400px] mx-auto bg-[#1a1a1a] rounded-lg overflow-hidden cursor-pointer ${
         isSelected ? "box" : ""
       }`}
       onClick={() => onSelect(skip.id)}

@@ -34,7 +34,7 @@ export default function Homepage() {
   };
 
   return (
-    <div className="w-full h-full max-w-7xl py-12">
+    <div className="w-full h-full max-w-7xl px-4 py-12">
       <h1 className="text-5xl font-bold text-center mb-6 text-white">
         Choose Your Skip Size
       </h1>
