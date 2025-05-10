@@ -13,7 +13,10 @@ export default function SkipCard({
   isSelected,
 }: SkipCardProps) {
   return (
-    <div className="bg-[#1a1a1a] rounded-lg overflow-hidden">
+    <div
+      className="bg-[#1a1a1a] rounded-lg overflow-hidden cursor-pointer"
+      onClick={() => onSelect(skip.id)}
+    >
       <div className="relative p-4">
         <img
           src="https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/4-yarder-skip.jpg"
