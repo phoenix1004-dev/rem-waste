@@ -9,6 +9,7 @@ export default function Homepage() {
   const [skips, setSkips] = useState<Skip[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedSkipId, setSelectedSkipId] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +30,7 @@ export default function Homepage() {
 
   const handleSelectSkip = (skipId: number) => {
     console.log("Selected skip:", skipId);
-    // Add your skip selection logic here
+    setSelectedSkipId(skipId);
   };
 
   return (
@@ -53,7 +54,12 @@ export default function Homepage() {
       {!loading && skips && (
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skips.map((skip) => (
-            <SkipCard key={skip.id} skip={skip} onSelect={handleSelectSkip} />
+            <SkipCard
+              key={skip.id}
+              skip={skip}
+              onSelect={handleSelectSkip}
+              isSelected={skip.id === selectedSkipId}
+            />
           ))}
         </div>
       )}

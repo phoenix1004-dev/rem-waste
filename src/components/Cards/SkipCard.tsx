@@ -3,9 +3,14 @@ import type { Skip } from "../../types";
 interface SkipCardProps {
   skip: Skip;
   onSelect: (skipId: number) => void;
+  isSelected: boolean;
 }
 
-export default function SkipCard({ skip, onSelect }: SkipCardProps) {
+export default function SkipCard({
+  skip,
+  onSelect,
+  isSelected,
+}: SkipCardProps) {
   return (
     <div className="bg-[#1a1a1a] rounded-lg overflow-hidden">
       <div className="relative p-4">
@@ -33,9 +38,15 @@ export default function SkipCard({ skip, onSelect }: SkipCardProps) {
 
         <button
           onClick={() => onSelect(skip.id)}
-          className="w-full bg-[#222] hover:bg-[#333] text-white text-lg py-3 rounded-md transition-colors flex items-center justify-center cursor-pointer"
+          className={`w-full text-white text-lg py-3 rounded-md transition-colors flex items-center justify-center cursor-pointer
+            ${
+              isSelected
+                ? "bg-blue-600 hover:bg-blue-700"
+                : "bg-[#222] hover:bg-[#333]"
+            }`}
         >
-          Select This Skip <span className="ml-2">→</span>
+          {isSelected ? "Selected" : "Select This Skip"}{" "}
+          <span className="ml-2">→</span>
         </button>
       </div>
     </div>
