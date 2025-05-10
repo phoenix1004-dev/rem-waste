@@ -6,11 +6,3 @@ export interface Skip {
   description?: string;
   imageUrl?: string;
 }
-
-export interface SkipResponse {
-  skips: Skip[];
-  location: {
-    postcode: string;
-    area: string;
-  };
-}
