@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { getSkipsData } from "../api";
-import type { SkipResponse } from "../types";
+import type { Skip } from "../types";
 import { AREA, POSTCODE } from "../lib/constants";
 import LoadingSkeleton from "../components/Loading";
+import SkipCard from "../components/Cards/SkipCard";
 
 export default function Homepage() {
-  const [skipsData, setSkipsData] = useState<SkipResponse | null>(null);
+  const [skips, setSkips] = useState<Skip[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -13,7 +14,7 @@ export default function Homepage() {
     const fetchData = async () => {
       try {
         const data = await getSkipsData(POSTCODE, AREA);
-        setSkipsData(data);
+        setSkips(data);
         console.log("API Response:", data);
       } catch (err) {
         setError("Failed to fetch skips data");
@@ -25,6 +26,11 @@ export default function Homepage() {
 
     fetchData();
   }, []);
+
+  const handleSelectSkip = (skipId: number) => {
+    console.log("Selected skip:", skipId);
+    // Add your skip selection logic here
+  };
 
   return (
     <div className="w-full h-full max-w-7xl py-12">
@@ -43,6 +49,14 @@ export default function Homepage() {
         </div>
       )}
       {error && <p className="text-center mt-4 text-red-500">{error}</p>}
+
+      {!loading && skips && (
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skips.map((skip) => (
+            <SkipCard key={skip.id} skip={skip} onSelect={handleSelectSkip} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
