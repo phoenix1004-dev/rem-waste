@@ -66,7 +66,7 @@ export default function SkipCard({
             }`}
         >
           {isSelected ? "Selected" : "Select This Skip"}{" "}
-          <span className="ml-2">→</span>
+          {!isSelected && <span className="ml-2">→</span>}
         </button>
       </div>
     </div>
