@@ -1,4 +1,5 @@
 import type { Skip } from "../../types";
+import cardImage from "../../assets/card-image.jpg";
 import checkIcon from "../../assets/check.svg";
 import warningIcon from "../../assets/warning.svg";
 
@@ -22,7 +23,7 @@ export default function SkipCard({
     >
       <div className="relative p-4">
         <img
-          src="https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/4-yarder-skip.jpg"
+          src={cardImage}
           alt={"image-" + skip.size}
           className="w-full h-64 object-cover rounded-lg"
         />
