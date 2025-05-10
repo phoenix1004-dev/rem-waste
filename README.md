@@ -1,54 +1,88 @@
-# React + TypeScript + Vite
+# REM Waste - Skip Booking Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application for booking waste removal skips, built with React 19, TypeScript, and Vite 6.
 
-Currently, two official plugins are available:
+## Approach
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This application follows a component-based architecture using React to create a user-friendly skip booking experience. Key aspects of the approach include:
 
-## Expanding the ESLint configuration
+- **API Integration**: Fetches skip data based on postcode and area from a RESTful API
+- **State Management**: Uses React's useState and useEffect hooks for local state management
+- **Component Structure**: Separates UI into reusable components (cards, loading states)
+- **TypeScript**: Implements strong typing throughout for better code quality and developer experience
+- **Responsive Design**: Built with Tailwind CSS for a mobile-first responsive layout
+- **Error Handling**: Implements proper error states and loading indicators for better UX
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
+
+- **Frontend**: React 19 with TypeScript
+- **Styling**: Tailwind CSS 4
+- **Build Tool**: Vite 6
+- **Linting**: ESLint 9
+
+## Features
+
+- Browse available skip sizes
+- Select skips based on postcode and area
+- Responsive design for all device sizes
+
+## Environment Variables
+
+The application requires the following environment variables:
+
+```
+VITE_API_URL=your_api_base_url
+VITE_POSTCODE=default_postcode
+VITE_AREA=default_area
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (latest LTS version recommended)
+- Yarn package manager
+
+### Installation
+
+```bash
+# Install dependencies
+yarn install
+
+# Start development server
+yarn dev
+
+# Build for production
+yarn build
+
+# Preview production build
+yarn preview
+```
+
+## Project Structure
+
+- `/src` - Application source code
+  - `/components` - Reusable UI components
+  - `/pages` - Page components
+  - `/api` - API integration
+  - `/lib` - Utility functions and constants
+  - `/types` - TypeScript type definitions
+
+## ESLint Configuration
+
+The project uses ESLint with TypeScript integration. To enable type-aware linting:
 
 ```js
 export default tseslint.config({
   extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
     ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
+    // For stricter rules: ...tseslint.configs.strictTypeChecked
   ],
   languageOptions: {
-    // other options...
     parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
       tsconfigRootDir: import.meta.dirname,
     },
   },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+});
 ```
